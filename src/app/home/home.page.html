@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Pokédex</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Pokédex</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <div class="pokemons-list">
+    <a href="#" *ngFor="let pokemon of listPokemon" [ngClass]=" 'pokemon-card bg-' + pokemon.types[0]">
+      <div class="pokemon-id transition" *ngIf="Number(pokemon.id) < 10" [innerHTML]="'#00'+pokemon.id"></div>
+      <div class="pokemon-id transition" *ngIf="Number(pokemon.id) < 100 && Number(pokemon.id) >= 10" [innerHTML]="'#0'+pokemon.id"></div>
+      <div class="pokemon-id transition" *ngIf="Number(pokemon.id) >= 100" [innerHTML]="'#'+pokemon.id"></div>
+      <p class="pokemon-name" [innerHTML]="pokemon.name"></p>
+      <ul class="pokemon-types">
+        <li class="pokemon-type" *ngFor="let type of pokemon.types" [innerHTML]="type"></li>
+      </ul>
+      <img class="pokeball transition" ngSrc="../../assets/images/pokeball.svg" height="16" width="16">
+      <img class="pokemon-image transition" [src]="pokemon.imageUrl">
+
+
+<!--      <ion-text [innerHTML]="pokemon.name"></ion-text>-->
+<!--      <ion-img></ion-img>-->
+<!--      <ion-row *ngFor="let type of pokemon.types">-->
+<!--        <ion-text [innerHTML]="type"></ion-text>-->
+<!--      </ion-row>-->
+    </a>
+  </div>
+
+
+
+</ion-content>
